@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['127.0.0.1','myecomsitee.herokuapp.com']
 
 
 # Application definition
-
+# web: gunicorn myecomsite.wsgi --log-file -
 INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'django.contrib.admin',

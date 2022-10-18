@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from.import views
 
-from django.views.static import serve
+# from django.views.static import serve
 # from django.conf.urls import url
 
 urlpatterns = [
@@ -27,6 +27,6 @@ urlpatterns = [
     path('shop/', include('shop.urls')),
     path('blog/', include('blog.urls')),
     path('',views.index,name='index'),
-    re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
-    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
+    # re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
+    # re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,1 +1,1 @@
-web: gunicorn myecomsite.wsgi --log-file -
+web: gunicorn mac.wsgi

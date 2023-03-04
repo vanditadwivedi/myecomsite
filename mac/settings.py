@@ -29,7 +29,11 @@ SECRET_KEY = 'django-insecure-qt+hp2g3aj9f+037&=wsm8(%%tw77h0pqah@(3$dji#=tx_rcr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','myecomsitee.herokuapp.com']
+if DEBUG:
+    ALLOWED_HOSTS = ['127.0.0.1',]
+else:
+    ALLOWED_HOSTS = ['vanditadwivedi.pythonanywhere.com',]
+
 
 
 # Application definition
@@ -62,7 +66,7 @@ ROOT_URLCONF = 'mac.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['mac/templates'],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,8 +129,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
-STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
-# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 #manage media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL ='/media/'
@@ -137,4 +142,4 @@ MEDIA_URL ='/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
